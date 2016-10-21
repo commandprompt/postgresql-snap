@@ -1,0 +1,153 @@
+name: postgresql93
+version: 9.3.14
+summary: PostgreSQL is a powerful, open source object-relational database system.
+description: 
+  PostgreSQL is a powerful, open source object-relational database system.
+  It has more than 15 years of active development and a proven architecture
+  that has earned it a strong reputation for reliability, data integrity,
+  and correctness.
+confinement: strict
+grade: stable
+
+apps:
+  initialize:
+       command: usr/bin/wrapper-initialize
+  clusterdb:
+       command: usr/bin/clusterdb
+       plugs: [network]
+  createdb:
+       command: usr/bin/createdb
+       plugs: [network]
+  createlang:
+       command: usr/bin/createlang
+       plugs: [network]
+  createuser:
+       command: usr/bin/createuser
+       plugs: [network]
+  dropdb:
+       command: usr/bin/dropdb
+       plugs: [network]
+  droplang:
+       command: usr/bin/droplang
+       plugs: [network]
+  dropuser:
+       command: usr/bin/dropuser
+       plugs: [network]
+  ecpg:
+       command: usr/bin/ecpg
+  initdb:
+       command: usr/bin/initdb
+  pgbasebackup:
+       command: usr/bin/pg_basebackup
+       plugs: [network]
+  pgconfig:
+       command: usr/bin/pg_config
+  pgcontroldata:
+       command: usr/bin/pg_controldata
+  pgctl:
+       command: usr/bin/wrapper-pg_ctl
+       plugs:
+          - network
+          - network-bind
+  pgdump:
+       command: usr/bin/pg_dump
+       plugs: [network]
+  pgdumpall:
+       command: usr/bin/pg_dumpall
+       plugs: [network]
+  pgisready:
+       command: usr/bin/pg_isready
+       plugs: [network]
+  pgreceivexlog:
+       command: usr/bin/pg_receivexlog
+       plugs: [network]
+  pgresetxlog:
+       command: usr/bin/pg_resetxlog
+  pgrestore:
+       command: usr/bin/pg_restore
+       plugs: [network]
+  postgres:
+    command: usr/bin/postgres
+    plugs:
+      - network
+      - network-bind
+  postmaster:
+       command: usr/bin/postmaster
+       plugs: [network]
+  psql:
+       command: usr/bin/psql
+       plugs: [network]
+  reindexdb:
+       command: usr/bin/reindexdb
+       plugs: [network]
+  vacuumdb:
+       command: usr/bin/vacuumdb
+       plugs: [network]
+  
+parts:
+  postgresql:
+    plugin: autotools
+    source: https://ftp.postgresql.org/pub/source/v9.3.14/postgresql-9.3.14.tar.bz2
+    configflags:
+        - --prefix=/usr
+        - --localstatedir=/etc
+        - --sysconfdir=/var
+        ## Exclude SELinux
+        #- -Xsepgsql
+        # Skip -pie on 32bit archs for performance and stability reasons
+        # (http://www.postgresql.org/message-id/20140519115318.GB7296@msgid.df7cb.de)
+        #- -fPIC -pie
+        #- -I/usr/include/mit-krb5
+        #- -Wl,--as-needed -L/usr/lib/mit-krb5 -L/usr/lib/i386/mit-krb5
+        - --enable-nls
+        - --enable-integer-datetimes
+        - --enable-thread-safety
+        - --enable-debug
+        - --disable-rpath
+        - --with-ossp-uuid
+        - --with-gnu-ld
+        - --with-pgport=5432
+        - --with-system-tzdata=/usr/share/zoneinfo
+        - --with-krb5
+        #- --with-gssapi
+        - --with-ldap
+        - --with-tcl
+        - --with-tclconfig=/usr/lib/tcl8.6/
+        - --with-perl
+        - --with-python
+        - --with-pam
+        - --with-openssl
+        - --with-libxml
+        - --with-libxslt
+    build-packages:
+        - bison
+        - flex
+        - libreadline-dev
+        - zlib1g-dev
+        - python-dev
+        - tcl8.6-dev
+        - libssl-dev
+        - libpam0g-dev
+        - libxml2-dev
+        - libkrb5-dev
+        #- libgssapi-krb5-2
+        - libldap2-dev
+        - libxslt1-dev
+        - libossp-uuid-dev
+        - libxml2-utils
+        - openjade
+        - opensp
+        - xsltproc
+        - gettext
+        - libperl-dev
+    stage-packages:
+        - libc-bin
+        - locales
+  wrapper:
+    plugin: make
+    source: .
+  #contrib:
+  #  plugin: make
+  #  source: parts/postgresql/src/contrib/
+  #  after:
+  #    - postgresql
