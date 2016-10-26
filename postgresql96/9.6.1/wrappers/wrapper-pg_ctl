@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+#
+# Locale configuration
+#
+export I18NPATH=$SNAP/usr/share/i18n
+export LOCPATH=$SNAP_USER_DATA/locales
+
+LOCLANG=en_US
+LOCEN=UTF-8
+LOC="$LOCLANG.$LOCEN"
+
+export LANG=$LOC
+
+$SNAP/usr/bin/pg_ctl "$@"
