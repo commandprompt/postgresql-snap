@@ -18,7 +18,7 @@ To install from Ubuntu Store simply run:
 
 ## postgres User
 
-Normally, you would run PostgreSQL as an unprivileged postgres user. This user has to be created manually.
+Normally, you would run PostgreSQL as an unprivileged postgres user. This user has to be created manually. Beware, that if you already have PostgreSQL installed on your system through an APT/PPA repository you must use a different system account. To reiterate, do not use an existing postgres system account that was created during PostgreSQL installation from standard Ubuntu, PGDG or custom PPA repositories. If you want to run both snap package and traditional deb version of PostgreSQL, create a new account. For example, pgsql.
 
 ## Cluster Initialization
 
