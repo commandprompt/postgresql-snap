@@ -18,21 +18,26 @@ To install from Ubuntu Store simply run:
 
 ## postgres User
 
-Normally, you would run PostgreSQL as an unprivileged postgres user. This user has to be created manually. Beware, that if you already have PostgreSQL installed on your system through an APT/PPA repository you must use a different system account. To reiterate, do not use an existing postgres system account that was created during PostgreSQL installation from standard Ubuntu, PGDG or custom PPA repositories. If you want to run both snap package and traditional deb version of PostgreSQL, create a new account. For example, pgsql.
+Traditionally, you would run PostgreSQL as an unprivileged postgres user. 
+This user has to be created manually.
+
+`$ adduser postgres`
+
+Beware, that if you already have PostgreSQL installed on your system through an APT/PPA repository, the postgres system account most likely already exists. You must use a different system account in that case. For example, pgsql or postgsql. It can be an arbitrary name: admin, joe, malcolm, etc.
+
+Do not use an existing postgres system account that was created during PostgreSQL installation from standard Ubuntu, PGDG or custom PPA repositories. If you want to run both snap package and traditional deb version of PostgreSQL, create a new account.
 
 ## Cluster Initialization
 
-As postgres user run `$ postgresql96.initialize initdb` and look for an example of pg_ctl command in the end of the initdb output that shows how you can start PostgreSQL.
+As postgres user run 
 
-There are actually two ways to do it:
+`$ postgresql96.initialize initdb` 
 
-`$ /snap/postgresql96/x1/usr/bin/pg_ctl -D /home/postgres/snap/postgresql96/x1/data -l /home/admin/snap/postgresql96/x1/logs/logfile start`
+This will set up your environment, call initdb and create a default cluster.
 
-or
+To start PostgreSQL server run:
 
 `$ postgresql96.pgctl -D /home/postgres/snap/postgresql96/x1/data -l /home/admin/snap/postgresql96/x1/logs/logfile start`
-
-The latter is a recommended way to run snap programs but both appear to work equally well. However, you should always first try postgresql9*.$PGCMD and execute any binaries directly only if the first method failed.
 
 Similarly, you can use pg_ctl to run usual commands: stop, restart, status, etc.
 
