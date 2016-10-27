@@ -55,6 +55,7 @@ export LOCPATH=$SNAP_USER_DATA/locales
 
 DATA_DIR="$SNAP_USER_DATA/data"
 LOG_DIR="$SNAP_USER_DATA/logs"
+PSQLHIST_DIR="$SNAP_USER_DATA/history"
 BASE_DIR="$DATA_DIR/base"
 
 #
@@ -73,11 +74,18 @@ fi
 
 
 pginit() {
-echo "Checking if data directory exists. If not, it will be created."
+echo "Setting up PostgreSQL environment..."
+echo "Data directory: $DATA_DIR"
 [ -e "$DATA_DIR" ] || mkdir "$DATA_DIR"
 
-echo "Checking if log directory exists. If not, it will be created."
+echo "Logs directory: $LOG_DIR"
 [ -e "$LOG_DIR" ] || mkdir "$LOG_DIR"
+
+echo "psql history directory: $PSQLHIST_DIR"
+[ -e "$PSQLHIST_DIR" ] || mkdir "$PSQLHIST_DIR"
+
+echo ".psqlrc file: $SNAP_USER_DATA/.psqlrc"
+[ -e "$SNAP_USER_DATA/.psqlrc" ] || echo "\set HISTFILE $PSQLHIST_DIR/psql_history- :DBNAME" > $SNAP_USER_DATA/.psqlrc
 
 echo "Checking if initdb has already been run before. If not, a new cluster will be created."
 [ -e "$BASE_DIR" ] || $SNAP/usr/bin/initdb -D $DATA_DIR

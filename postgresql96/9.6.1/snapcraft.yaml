@@ -94,7 +94,7 @@ apps:
        command: usr/bin/postmaster
        plugs: [network]
   psql:
-       command: usr/bin/psql
+       command: usr/bin/wrapper-psql
        plugs: [network]
   reindexdb:
        command: usr/bin/reindexdb
