@@ -9,9 +9,9 @@ You can find Command Prompt on the web at https://commandprompt.com/ .
 If you don't want to build the binaries but instead just want to install the
 packages, run this command:
 
-`$ sudo snap install postgresql$version
+`$ sudo snap install postgresql$version`
 
-Where $version is one of 93,94,95 or 96.
+Where $version is one of 93, 94, 95 or 96.
 
 ## Build
 
