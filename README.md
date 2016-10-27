@@ -56,9 +56,9 @@ Similarly, you can use pg_ctl to run usual commands: stop, restart, status, etc.
 Snap format imposes a number of non-critical and more serious limitations:
 
 * Only one locale is currently supported – en_US.UTF-8.
-* psql cannot write to ~/.psql_history. The snap home: plug (or interface) that gives psql privileges to read and write inside home directories works with non-hidden files only.
 * There is no systemd service file for postgres daemon. PostgreSQL has to be managed manually by using pg_ctl.
 * pg_ctl is run via a BASH wrapper to make it aware of a default system locale (en_US.UTF-8).
+* psql is also run via a BASH wrapper to let it successfully write to HISTFILE (.psql_history)
 * Kerberos, GSSAPI and Bonjour support is disabled.
 * contrib modules are not included. These do not build due to snapcraft's make plugin inability to handle an included via a relative path Makefile inside another Makefile.
 
