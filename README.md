@@ -1,17 +1,18 @@
 # postgresql-snap
 
 This is a collection of snapcraft recipes for PostgreSQL 9.3, 9.4, 9.5 and 9.6 that can be used to create PostgreSQL snap packages.
+
 The packages are maintained as a service to the community by Command Prompt, Inc. A PostgreSQL and Linux Professional services company.
-You can find Command Prompt on the web at https://commandprompt.com/ .
+You can find Command Prompt on the web at https://commandprompt.com
 
 ## Get binaries
 
 If you don't want to build the binaries but instead just want to install the
 packages, run this command:
 
-`$ sudo snap install postgresql$version`
+`$ sudo snap install postgresql$ver`
 
-Where $version is one of 93, 94, 95 or 96.
+Where $ver is one of 93, 94, 95 or 96.
 
 ## Build
 
@@ -61,6 +62,10 @@ Similarly, you can use pg_ctl to run usual commands: stop, restart, status, etc.
 ## Connect To PostgreSQL
 
 `$ postgresql96.psql -h 127.0.0.1 -d postgres`
+
+## Reporting Issues
+
+We are publicly working on this project and you can join the effort. Submit any bug reports or feature requests in our Redmine [PostgreSQL snap project](https://public.commandprompt.com/projects/pgsql-snap/issues).
 
 ## Known Problems and Limitations
 
