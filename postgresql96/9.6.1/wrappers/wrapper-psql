@@ -2,6 +2,6 @@
 
 set -e
 
-export PSQLRC="$SNAP_USER_DATA/.psqlrc"
+export PSQLRC="$SNAP_USER_COMMON/.psqlrc"
 
 $SNAP/usr/bin/psql "$@"

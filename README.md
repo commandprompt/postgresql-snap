@@ -49,15 +49,15 @@ This will set up your environment, call initdb and create a default cluster.
 
 To start PostgreSQL server run:
 
-`$ postgresql96.pgctl -D /home/postgres/snap/postgresql96/x1/data -l /home/admin/snap/postgresql96/x1/logs/logfile start`
+`$ postgresql96.pgctl -D /home/postgres/snap/postgresql96/common/data -l /home/postgres/snap/postgresql96/common/logs/logfile start`
 
 Similarly, you can use pg_ctl to run usual commands: stop, restart, status, etc.
 
-`$ postgresql96.pgctl -D /home/postgres/snap/postgresql96/x1/data -l /home/admin/snap/postgresql96/x1/logs/logfile stop`
+`$ postgresql96.pgctl -D /home/postgres/snap/postgresql96/common/data -l /home/postgres/snap/postgresql96/common/logs/logfile stop`
 
-`$ postgresql96.pgctl -D /home/postgres/snap/postgresql96/x1/data -l /home/admin/snap/postgresql96/x1/logs/logfile restart`
+`$ postgresql96.pgctl -D /home/postgres/snap/postgresql96/common/data -l /home/postgres/snap/postgresql96/common/logs/logfile restart`
 
-`$ postgresql96.pgctl -D /home/postgres/snap/postgresql96/x1/data -l /home/admin/snap/postgresql96/x1/logs/logfile status`
+`$ postgresql96.pgctl -D /home/postgres/snap/postgresql96/common/data -l /home/postgres/snap/postgresql96/common/logs/logfile status`
 
 ## Connect To PostgreSQL
 
