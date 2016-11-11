@@ -39,6 +39,18 @@ Beware, that if you already have PostgreSQL installed on your system through an 
 
 Do not use an existing postgres system account that was created during PostgreSQL installation from standard Ubuntu, PGDG or custom PPA repositories. If you want to run both snap package and traditional deb version of PostgreSQL, create a new account.
 
+## Running Commands
+
+Note that you need to run PostgreSQL commands such as psql, pg_ctl, postgres, etc. via wrappers that start with a snap package name as prefix. For example, to run pg_dump you would run postgresql96.pgdump, to run dropdb you would run postgresql96.dropdb and so on. This is just how snap packages work (see http://snapcraft.io/docs/core/usage, section "Run snaps”).
+
+As you can see pg_dump and pg_ctl become $PREFIX.pgdump and $PREFIX.pgctl. The underscore symbol is used as a field separator character in snapcraft.yaml. It has to be substituted with something else. In this case it was simply deleted.
+
+To get a list of all commands that are available in a package simply run:
+
+`$ ls /snap/postgresql96/current/*.wrapper`
+
+Where command-dropdb.wrapper is postgresql96.dropdb and so on.
+
 ## Cluster Initialization
 
 As postgres user run 
