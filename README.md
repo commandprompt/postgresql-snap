@@ -16,11 +16,11 @@ Where $ver is one of 93, 94, 95 or 96.
 
 ## Build
 
-Simply run `snapcraft` inside any of the postgresql9*/ directories.
+Snapcraft recipes for each PostgreSQL version are found in separate branches. To build a specific PostgreSQL version simply check out a branch that corresponds to the version you need and run `snapcraft` in a root of that branch checkout.
 
 ## Install
 
-If you want to install a local snap package run this command:
+To install a local build of a snap package run this command:
 
 `$ sudo snap install --force-dangerous postgresql96_9.6.0_amd64.snap`
 
