@@ -146,8 +146,9 @@ parts:
   wrapper:
     plugin: make
     source: .
-  #contrib:
-  #  plugin: make
-  #  source: parts/postgresql/src/contrib/
-  #  after:
-  #    - postgresql
+  contrib:
+    plugin: make
+    source: ./parts/postgresql/build
+    source-subdir: contrib
+    after:
+      - postgresql
