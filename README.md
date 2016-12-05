@@ -88,6 +88,5 @@ Snap format imposes a number of non-critical and more serious limitations:
 * pg_ctl is run via a BASH wrapper to make it aware of a default system locale (en_US.UTF-8).
 * psql is also run via a BASH wrapper to let it successfully write to HISTFILE (.psql_history)
 * Kerberos, GSSAPI and Bonjour support is disabled.
-* contrib modules are not included. These do not build due to snapcraft's make plugin inability to handle an included via a relative path Makefile inside another Makefile.
 
-We intend to eliminate as many of these limitations as possible in future versions of these snapcraft recipes. Most of them are a result of various design decisions made by snapcraft developers that don't work well with how PostgreSQL build process works. However, snapcraft is a young, rapidly developing project and things may change sooner rather than later.
+We intend to eliminate as many of these limitations as possible in future versions of these snapcraft recipes.
