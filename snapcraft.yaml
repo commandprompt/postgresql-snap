@@ -112,11 +112,25 @@ parts:
         - xsltproc
         - gettext
         - libperl-dev
+        - dpkg-dev
     stage-packages:
         - libc-bin
         - locales
     build: |
+
+        HOST_MULTIARCH=$(gcc -print-multiarch)
+        ARCH=$(dpkg-architecture -qDEB_HOST_ARCH_BITS)
+        
+        if [ $ARCH -eq 64 ]; then
+             EXTRA_CFLAGS="-fno-omit-frame-pointer"
+        
+        elif [ $ARCH -eq 32 ]; then
+             EXTRA_CFLAGS="-fPIC -pie"
+        fi
+        
         ./configure \
+          LDFLAGS="-Wl,--as-needed -L/usr/lib/mit-krb5 -L/usr/lib/$HOST_MULTIARCH/mit-krb5" \
+          CFLAGS="-I/usr/include/mit-krb5 $EXTRA_CFLAGS" \
           --prefix=/usr \
           --localstatedir=/etc \
           --sysconfdir=/var \
