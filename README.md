@@ -81,12 +81,12 @@ We are publicly working on this project and you can join the effort. Submit any 
 
 ## Known Problems and Limitations
 
-Snap format imposes a number of non-critical and more serious limitations:
+Design of a snap package imposes a number of non-critical and more serious limitations:
 
 * Only one locale is currently supported – en_US.UTF-8.
 * There is no systemd service file for postgres daemon. PostgreSQL has to be managed manually by using pg_ctl.
-* pg_ctl is run via a BASH wrapper to make it aware of a default system locale (en_US.UTF-8).
+* pg_ctl is run via a BASH wrapper to make it aware of a default system locale within a sandbox (en_US.UTF-8).
 * psql is also run via a BASH wrapper to let it successfully write to HISTFILE (.psql_history)
-* Kerberos, GSSAPI and Bonjour support is disabled.
+* Bonjour and SELinux support is disabled.
 
-We intend to eliminate as many of these limitations as possible in future versions of these snapcraft recipes.
+We intend to eliminate as many of these limitations as possible in the future.
