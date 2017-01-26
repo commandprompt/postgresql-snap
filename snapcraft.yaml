@@ -99,7 +99,6 @@ parts:
         - libpam0g-dev
         - libxml2-dev
         - libkrb5-dev
-        #- libgssapi-krb5-2
         - libldap2-dev
         - libxslt1-dev
         - libossp-uuid-dev
@@ -113,7 +112,12 @@ parts:
         - libc-bin
         - locales
     build: |
+       
+        HOST_MULTIARCH=$(gcc -print-multiarch)
+
         ./configure \
+          LDFLAGS="-Wl,--as-needed -L/usr/lib/mit-krb5 -L/usr/lib/$HOST_MULTIARCH/mit-krb5" \
+          CFLAGS="-I/usr/include/mit-krb5 -fno-omit-frame-pointer" \
           --prefix=/usr \
           --localstatedir=/etc \
           --sysconfdir=/var \
@@ -127,6 +131,7 @@ parts:
           --with-pgport=5432 \
           --with-system-tzdata=/usr/share/zoneinfo \
           --with-krb5 \
+          --with-gssapi \
           --with-ldap \
           --with-tcl \
           --with-tclconfig=/usr/lib/tcl8.6/ \
