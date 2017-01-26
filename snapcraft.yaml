@@ -102,7 +102,6 @@ parts:
         - libpam0g-dev
         - libxml2-dev
         - libkrb5-dev
-        #- libgssapi-krb5-2
         - libldap2-dev
         - libxslt1-dev
         - uuid-dev
