@@ -88,37 +88,6 @@ parts:
   postgresql:
     plugin: autotools
     source: https://ftp.postgresql.org/pub/source/v9.3.15/postgresql-9.3.15.tar.bz2
-    configflags:
-        - --prefix=/usr
-        - --localstatedir=/etc
-        - --sysconfdir=/var
-        ## Exclude SELinux
-        #- -Xsepgsql
-        # Skip -pie on 32bit archs for performance and stability reasons
-        # (http://www.postgresql.org/message-id/20140519115318.GB7296@msgid.df7cb.de)
-        #- -fPIC -pie
-        #- -I/usr/include/mit-krb5
-        #- -Wl,--as-needed -L/usr/lib/mit-krb5 -L/usr/lib/i386/mit-krb5
-        - --enable-nls
-        - --enable-integer-datetimes
-        - --enable-thread-safety
-        - --enable-debug
-        - --disable-rpath
-        - --with-ossp-uuid
-        - --with-gnu-ld
-        - --with-pgport=5432
-        - --with-system-tzdata=/usr/share/zoneinfo
-        - --with-krb5
-        #- --with-gssapi
-        - --with-ldap
-        - --with-tcl
-        - --with-tclconfig=/usr/lib/tcl8.6/
-        - --with-perl
-        - --with-python
-        - --with-pam
-        - --with-openssl
-        - --with-libxml
-        - --with-libxslt
     build-packages:
         - bison
         - flex
@@ -143,12 +112,32 @@ parts:
     stage-packages:
         - libc-bin
         - locales
+    build: |
+        ./configure \
+          --prefix=/usr \
+          --localstatedir=/etc \
+          --sysconfdir=/var \
+          --enable-nls \
+          --enable-integer-datetimes \
+          --enable-thread-safety \
+          --enable-debug \
+          --disable-rpath \
+          --with-ossp-uuid \
+          --with-gnu-ld \
+          --with-pgport=5432 \
+          --with-system-tzdata=/usr/share/zoneinfo \
+          --with-krb5 \
+          --with-ldap \
+          --with-tcl \
+          --with-tclconfig=/usr/lib/tcl8.6/ \
+          --with-perl \
+          --with-python \
+          --with-pam \
+          --with-openssl \
+          --with-libxml \
+          --with-libxslt && make world
+    install: |
+        make install-world DESTDIR=$SNAPCRAFT_PART_INSTALL
   wrapper:
     plugin: make
     source: .
-  contrib:
-    plugin: make
-    source: ./parts/postgresql/build
-    source-subdir: contrib
-    after:
-      - postgresql
