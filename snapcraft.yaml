@@ -127,6 +127,7 @@ parts:
         - gettext
         - libperl-dev
         - dpkg-dev
+        - pkg-config
         - libicu-dev
     stage-packages:
         - libc-bin
