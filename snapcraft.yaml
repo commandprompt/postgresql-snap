@@ -127,7 +127,7 @@ parts:
         - gettext
         - libperl-dev
         - dpkg-dev
-	- libicu-dev
+        - libicu-dev
     stage-packages:
         - libc-bin
         - locales
