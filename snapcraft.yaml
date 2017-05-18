@@ -92,7 +92,7 @@ apps:
   pgxlogdump:
        command: usr/bin/pg_xlogdump
   pltcldelmod:
-       comamnd: usr/bin/pltcl_delmod
+       command: usr/bin/pltcl_delmod
   pltcllistmod:
        command: usr/bin/pltcl_listmod
   pltclloadmod:
