@@ -37,6 +37,9 @@ apps:
        command: usr/bin/ecpg
   initdb:
        command: usr/bin/initdb
+  oid2name:
+       command: usr/bin/oid2name
+       plugs: [network]
   pgarchivecleanup:
        command: usr/bin/pg_archivecleanup
   pgbasebackup:
@@ -77,6 +80,9 @@ apps:
   pgrewind:
        command: usr/bin/pg_rewind
        plugs: [network]
+  pgstandby:
+       command: usr/bin/pg_standby
+       plugs: [network]
   pgtestfsync:
        command: usr/bin/pg_test_fsync
   pgtesttiming:
@@ -85,6 +91,12 @@ apps:
        command: usr/bin/pg_upgrade
   pgxlogdump:
        command: usr/bin/pg_xlogdump
+  pltcldelmod:
+       comamnd: usr/bin/pltcl_delmod
+  pltcllistmod:
+       command: usr/bin/pltcl_listmod
+  pltclloadmod:
+       command: usr/bin/pltcl_loadmod
   postgres:
     command: usr/bin/postgres
     plugs:
@@ -101,6 +113,9 @@ apps:
        plugs: [network]
   vacuumdb:
        command: usr/bin/vacuumdb
+       plugs: [network]
+  vacuumlo:
+       command: usr/bin/vacuumlo
        plugs: [network]
   
 parts:
