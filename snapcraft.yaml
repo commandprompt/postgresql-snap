@@ -1,5 +1,5 @@
 name: postgresql10
-version: beta1
+version: beta2
 summary: PostgreSQL is a powerful, open source object-relational database system.
 description: 
   PostgreSQL is a powerful, open source object-relational database system.
@@ -106,7 +106,7 @@ apps:
 parts:
   postgresql:
     plugin: autotools
-    source: https://borka.postgresql.org/staging/03f008525beadb658122409aa1239da80a90b63c/postgresql-10beta1.tar.bz2
+    source: https://ftp.postgresql.org/pub/source/v10beta2/postgresql-10beta2.tar.bz2
     build-packages:
         - bison
         - flex
@@ -129,6 +129,8 @@ parts:
         - dpkg-dev
         - pkg-config
         - libicu-dev
+        - libipc-run-perl
+        - libio-pty-perl
     stage-packages:
         - libc-bin
         - locales
