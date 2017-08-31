@@ -106,7 +106,7 @@ apps:
 parts:
   postgresql:
     plugin: autotools
-    source: https://ftp.postgresql.org/pub/source/v10beta3/postgresql-10beta3.tar.bz2
+    source: https://ftp.postgresql.org/pub/source/v10beta4/postgresql-10beta4.tar.bz2
     build-packages:
         - bison
         - flex
