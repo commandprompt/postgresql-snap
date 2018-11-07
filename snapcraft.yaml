@@ -1,5 +1,5 @@
-name: postgresql10
-version: 10.4
+name: postgresql
+version: 10.5
 summary: PostgreSQL is a powerful, open source object-relational database system.
 description: 
   PostgreSQL is a powerful, open source object-relational database system.
@@ -106,7 +106,7 @@ apps:
 parts:
   postgresql:
     plugin: autotools
-    source: https://ftp.postgresql.org/pub/source/v10.4/postgresql-10.4.tar.bz2
+    source: https://ftp.postgresql.org/pub/source/v10.5/postgresql-10.5.tar.bz2
     build-packages:
         - bison
         - flex
