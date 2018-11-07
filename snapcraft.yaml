@@ -1,5 +1,5 @@
-name: postgresql93
-version: 9.3.23
+name: postgresql
+version: 9.3.24
 summary: PostgreSQL is a powerful, open source object-relational database system.
 description: 
   PostgreSQL is a powerful, open source object-relational database system.
@@ -115,7 +115,7 @@ apps:
 parts:
   postgresql:
     plugin: autotools
-    source: https://ftp.postgresql.org/pub/source/v9.3.23/postgresql-9.3.23.tar.bz2
+    source: https://ftp.postgresql.org/pub/source/v9.3.24/postgresql-9.3.24.tar.bz2
     build-packages:
         - bison
         - flex
