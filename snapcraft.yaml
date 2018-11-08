@@ -1,5 +1,5 @@
 name: postgresql
-version: 11.0
+version: 11.1
 summary: PostgreSQL is a powerful, open source object-relational database system.
 description: 
   PostgreSQL is a powerful, open source object-relational database system.
@@ -110,7 +110,7 @@ apps:
 parts:
   postgresql:
     plugin: autotools
-    source: https://ftp.postgresql.org/pub/source/v11.0/postgresql-11.0.tar.bz2
+    source: https://ftp.postgresql.org/pub/source/v11.1/postgresql-11.1.tar.bz2
     build-packages:
         - bison
         - flex
